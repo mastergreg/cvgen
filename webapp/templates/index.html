@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% block contact %}
+<div class="well span8 offset2">
+    <strong> {{ data.ContactInfo.name }} </strong><br>
+</div>
+<div class="row well span8 offset2">
+    <div class="span3">
+        {% for l in data.ContactInfo.address.lines %}
+        {{ l }} <br>
+        {% endfor %}
+    </div>
+    <div class="span3 pull-right">
+        Phone: {{ data.ContactInfo.telephone }}<br>
+        Mobile: {{ data.ContactInfo.mobile }}<br>
+        E-mail: <a href="mailto://{{ data.ContactInfo.telephone }}">{{ data.ContactInfo.email }}</a><br>
+    </div>
+</div>
+{% endblock %}
+
+{% block skills %}
+{% if data.Skills %}
+<div class="well span8 offset2">
+    <strong> Skills </strong><br>
+    {% for item in data.Skills %}
+    <div class="row">
+        <div class="span2">
+            {{ item.section }} <br>
+        </div>
+        <div class="span6">
+            <p>{{ item.comment }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span6 offset2">
+            <ul>
+            {% for lsitem in item.skills %}
+            <li> {{ lsitem }} </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block experience %}
+{% if data.Experience%}
+<div class="well span8 offset2">
+    <strong> Experience </strong><br>
+    {% for item in data.Experience %}
+    <div class="row">
+        <div class="span2">
+            {{ item.year }} <br>
+        </div>
+        <div class="span3">
+            <strong> {{ item.working_environment }} </strong><br>
+        </div>
+        <div class="span3">
+            <strong> {{ item.position }} </strong><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span6 offset2">
+            <p>
+            {{ item.body_text }}
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block education %}
+{% if data.Education %}
+<div class="well span8 offset2">
+    <strong> Education </strong><br>
+    {% for item in data.Education %}
+    <div class="row">
+        <div class="span2">
+            {{ item.year }} <br>
+        </div>
+        <div class="span3">
+            <strong> {{ item.title }} </strong><br>
+        </div>
+        <div class="span3">
+            <strong> {{ item.degree }} </strong><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span6 offset2">
+            <p>
+            {{ item.body_text }}
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+{% endif %}
+{% endblock %}
+
